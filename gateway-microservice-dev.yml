@@ -28,3 +28,7 @@ spring:
           uri: lb://donacion-microservice
           predicates:
             - Path=/donacion/v1/**
+        - id: auth-microservice
+          uri: lb://auth-microservice
+          predicates:
+            - Path=/auth/**
