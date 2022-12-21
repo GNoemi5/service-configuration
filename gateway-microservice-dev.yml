@@ -1,0 +1,30 @@
+server:
+  port: 8080
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: donacion-microservice
+          uri: lb://donacion-microservice
+          predicates:
+            - Path=/donacion/v1/**
+        - id: adopcion-microservice
+          uri: lb://adopcion-microservice
+          predicates:
+            - Path=/mascota/v1/**, /tipo-mascota/v1/**
+        - id: donacion-microservice
+          uri: lb://donacion-microservice
+          predicates:
+            - Path=/donacion/v1/**
