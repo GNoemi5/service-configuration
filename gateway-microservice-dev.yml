@@ -20,10 +20,14 @@ spring:
           uri: lb://donacion-microservice
           predicates:
             - Path=/donacion/v1/**
+          filters:
+            - AuthFilter
         - id: adopcion-microservice
           uri: lb://adopcion-microservice
           predicates:
             - Path=/mascota/v1/**, /tipo-mascota/v1/**
+          filters:
+            - AuthFilter
         - id: donacion-microservice
           uri: lb://donacion-microservice
           predicates:
