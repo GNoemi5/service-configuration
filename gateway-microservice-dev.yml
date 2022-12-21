@@ -32,6 +32,11 @@ spring:
           uri: lb://adopcion-microservice
           predicates:
             - Path=/tipo-mascota/v1/**
+        - id: adopcion-microservice
+          uri: lb://adopcion-microservice
+          predicates:
+            - Path=/adopcion/v1/**
+
         - id: donacion-microservice
           uri: lb://donacion-microservice
           predicates:
